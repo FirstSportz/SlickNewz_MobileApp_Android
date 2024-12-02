@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <!-- Apple's default blue -->
+    <color name="shadowColor">#33000000</color> <!-- Subtle shadow -->
+
+
+    <!-- Primary Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#2979FF</color>
+    <color name="gray">#757575</color>
+    <color name="black">#000000</color>
+
+    <!-- Background Colors -->
+    <color name="background_light_gray">#F5F5F5</color>
+
+    <!-- Button Colors -->
+    <color name="button_blue">#2979FF</color>
+    <color name="button_blue_pressed">#1E60C8</color>
+
+    <!-- Google Sign-in Colors -->
+    <color name="google_button_bg">#FFFFFF</color>
+    <color name="google_button_border">#DADCE0</color>
+
+    <color name="primaryColor">#1868DB</color>
+    <color name="googleTextColor">#FFFFFF</color>
+
+</resources>

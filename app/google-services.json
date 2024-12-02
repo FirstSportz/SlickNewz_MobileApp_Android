@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079366771990",
+    "project_id": "slicknewz-5ad59",
+    "storage_bucket": "slicknewz-5ad59.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079366771990:android:7feda37ebbfb935b5bdc37",
+        "android_client_info": {
+          "package_name": "com.firstsportz.slicknewz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079366771990-99bbo0j3oi5q8oipfo2paepcp7h35agb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0GrhleQ7SXcPBpqe9GVh0_rISJEiZj9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079366771990-99bbo0j3oi5q8oipfo2paepcp7h35agb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

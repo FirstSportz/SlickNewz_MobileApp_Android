@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SlickNewZ</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_phone_hint">Email or Phone</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account? Login</string>
+    <string name="password_mismatch">Passwords do not match!</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="error_icon_desc">Error Icon</string>
+    <string name="error_title">Error</string>error_message
+    <string name="error_message">Something went wrong. Please try again.</string>
+    <string name="google_sign_in">Sign up with Google</string>
+
+    <string name="hello">Hello</string>
+    <string name="there">there!</string>
+    <string name="create_account_msg">Create an account to access your saved news and get real-time updates.</string>
+    <string name="email_or_phone_hint">Enter your mail/phone number</string>
+    <string name="create_password_hint">Create a password</string>
+    <string name="retype_password_hint">Re-type your password</string>
+    <string name="by_signing_msg">By signing up, you agree to our</string>
+    <string name="terms_service"> Terms of Service</string>
+    <string name="and"> and</string>
+    <string name="privacy_policy"> Privacy Policy</string>
+    <string name="already_account_msg">Already have an account?</string>
+    <string name="sign_in_txt"> Sign in</string>
+    <string name="sign_up_txt">Sign Up</string>
+    <string name="sign_up_google_txt">Sign up using Google</string>
+
+    <string name="email_icon">Email Icon</string>
+    <string name="password_icon">Password Icon</string>
+
+
+</resources>
