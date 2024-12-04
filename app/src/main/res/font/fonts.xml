@@ -6,17 +6,17 @@
     <font
         app:fontStyle="normal"
         app:fontWeight="400"
-        app:font="@font/roboto_regular" />
+        app:font="@font/montserrat_regular" />
 
     <!-- Medium Font -->
     <font
         app:fontStyle="normal"
         app:fontWeight="500"
-        app:font="@font/roboto_medium" />
+        app:font="@font/montserrat_regular" />
 
     <!-- Bold Font -->
     <font
         app:fontStyle="normal"
         app:fontWeight="700"
-        app:font="@font/roboto_bold" />
+        app:font="@font/montserrat_regular" />
 </font-family>

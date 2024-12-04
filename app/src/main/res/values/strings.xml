@@ -42,4 +42,16 @@
     <string name="password_icon">Password Icon</string>
 
 
+    <!--sign In-->
+
+    <string name="welcome">Welcome</string>
+    <string name="back">back!</string>
+    <string name="sign_in_msg">Sign in to access your saved news and get real-time new update</string>
+    <string name="email_hint">Enter your mail</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_in_google_txt">Sign in using Google...</string>
+    <string name="done_have_account_msg">Don’t have an account? </string>
+    <string name="create_an_account">Create an account</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="logging_in">Login In....</string>
 </resources>

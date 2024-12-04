@@ -6,27 +6,6 @@
         <item name="colorOnPrimary">@color/white</item>
     </style>
 
-    <!-- Title Text Style -->
-    <style name="TitleText">
-        <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/blue</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
-    </style>
-
-    <!-- Subtitle Text Style -->
-    <style name="SubtitleText">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/gray</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-    </style>
-
-    <!-- Button Text Style -->
-    <style name="ButtonText">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
-    </style>
-
     <style name="hello_there">
         <item name="android:textSize">40sp</item>
         <item name="android:letterSpacing">-0.04</item>
