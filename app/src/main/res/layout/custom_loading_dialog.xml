@@ -19,7 +19,7 @@
         <ProgressBar
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:indeterminateTint="@color/purple_500" />
+            android:indeterminateTint="@color/primaryColor" />
 
         <TextView
             android:id="@+id/tv_loading_message"

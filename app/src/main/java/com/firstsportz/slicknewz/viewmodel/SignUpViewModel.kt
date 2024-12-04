@@ -51,11 +51,11 @@ class SignUpViewModel(private val repository: AuthRepository) : ViewModel() {
             try {
                 val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
                 val errorMessage = errorResponse.error?.message ?: "Unknown error occurred"
-                signUpResponse.postValue(Resource.Error("Error: $errorMessage"))
+                signUpResponse.postValue(Resource.Error("$errorMessage"))
             } catch (e: Exception) {
                 // Fallback for parsing failure
                 Log.e("SignUp", "Error parsing error body: ${e.message}")
-                signUpResponse.postValue(Resource.Error("Error: ${response.message()}"))
+                signUpResponse.postValue(Resource.Error("${response.message()}"))
             }
         }
     }

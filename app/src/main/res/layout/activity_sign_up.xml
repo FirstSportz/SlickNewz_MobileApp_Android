@@ -129,6 +129,7 @@
 
 
             <ImageView
+                android:id="@+id/ivTogglePassword"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_eye"
@@ -171,6 +172,7 @@
                 android:inputType="textPassword"/>
 
             <ImageView
+                android:id="@+id/ivToggleConfirmPassword"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_eye"
@@ -198,36 +200,14 @@
                 />
 
             <TextView
-                android:id="@+id/bysigning_text"
+                android:id="@+id/termsAndPrivacyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/by_signing_msg"
-                android:textSize="12sp"
-                android:textColor="#808080"
-                style="@style/terms_n_conditions"/>
-            <TextView
-                android:id="@+id/terms_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/terms_service"
-                android:textSize="12sp"
-                android:textColor="@color/primaryColor"
-                style="@style/terms_n_conditions"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/and"
+                android:text="@string/terms_and_privacy_text"
                 android:textSize="12sp"
                 android:textColor="#808080"
                 style="@style/terms_n_conditions"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/privacy_policy"
-                android:textSize="12sp"
-                android:textColor="@color/primaryColor"
-                style="@style/terms_n_conditions"/>
         </LinearLayout>
 
         <!-- Sign In Button -->

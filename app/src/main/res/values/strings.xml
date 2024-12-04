@@ -19,14 +19,25 @@
     <string name="create_password_hint">Create a password</string>
     <string name="retype_password_hint">Re-type your password</string>
     <string name="by_signing_msg">By signing up, you agree to our</string>
-    <string name="terms_service"> Terms of Service</string>
-    <string name="and"> and</string>
-    <string name="privacy_policy"> Privacy Policy</string>
+    <string name="terms_and_privacy_text">By signing up, you agree to our Terms of Service and Privacy Policy</string>
     <string name="already_account_msg">Already have an account?</string>
     <string name="sign_in_txt"> Sign in</string>
     <string name="sign_up_txt">Sign Up</string>
     <string name="sign_up_google_txt">Sign up using Google</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="signing_up_with_google">Signing up with Google...</string>
+    <string name="registering">Registering...</string>
 
+    <string name="email_is_required">Email is required.</string>
+
+    <string name="enter_valid_email">Enter a valid email address.</string>
+
+    <string name="password_required"> Password is required.</string>
+
+    <string name="password_length">Password must be at least 6 characters long.</string>
+
+    <string name="agree_terms_condition">You must agree to the Terms and Conditions to sign up.</string>
     <string name="email_icon">Email Icon</string>
     <string name="password_icon">Password Icon</string>
 
