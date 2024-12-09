@@ -11,17 +11,22 @@
     <string name="error_title">Error</string>error_message
     <string name="error_message">Something went wrong. Please try again.</string>
     <string name="google_sign_in">Sign up with Google</string>
-
+    <string name="sending_reset_link">Sending reset link</string>
+    <string name="reset_link_sent">Reset link sent on email.</string>
     <string name="hello">Hello</string>
     <string name="there">there!</string>
     <string name="create_account_msg">Create an account to access your saved news and get real-time updates.</string>
     <string name="email_or_phone_hint">Enter your mail/phone number</string>
     <string name="create_password_hint">Create a password</string>
+    <string name="new_password_hint">New Password</string>
     <string name="retype_password_hint">Re-type your password</string>
     <string name="by_signing_msg">By signing up, you agree to our</string>
     <string name="terms_and_privacy_text">By signing up, you agree to our Terms of Service and Privacy Policy</string>
     <string name="already_account_msg">Already have an account?</string>
     <string name="sign_in_txt"> Sign in</string>
+    <string name="next_txt">Next</string>
+    <string name="submit_txt">Submit</string>
+    <string name="verify">Verify</string>
     <string name="sign_up_txt">Sign Up</string>
     <string name="sign_up_google_txt">Sign up using Google</string>
     <string name="terms_of_service">Terms of Service</string>
@@ -34,6 +39,7 @@
     <string name="enter_valid_email">Enter a valid email address.</string>
 
     <string name="password_required"> Password is required.</string>
+    <string name="confirmpassword_required"> Retype password is required.</string>
 
     <string name="password_length">Password must be at least 6 characters long.</string>
 
@@ -47,11 +53,26 @@
     <string name="welcome">Welcome</string>
     <string name="back">back!</string>
     <string name="sign_in_msg">Sign in to access your saved news and get real-time new update</string>
+    <string name="forgot_pass_msg">Enter your email to get an OTP</string>
+    <string name="verification_code_msg">Enter your verification code that we sent you through your email.</string>
     <string name="email_hint">Enter your mail</string>
     <string name="remember_me">Remember me</string>
-    <string name="sign_in_google_txt">Sign in using Google...</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot">Forgot</string>
+    <string name="update">Update</string>
+    <string name="password">Password</string>
+    <string name="verification">Verification</string>
+    <string name="sign_in_google_txt">Sign in using Google</string>
     <string name="done_have_account_msg">Don’t have an account? </string>
+    <string name="received_code_txt">Haven’t received the code?</string>
+    <string name="resend_code">  Resend Code</string>
+
     <string name="create_an_account">Create an account</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="logging_in">Login In....</string>
+    <string name="update_password_msg">Updating Password....</string>
+    <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
+    <string name="title_activity_verification_code">VerificationCodeActivity</string>
+    <string name="verification_code_validation">Please enter a valid 5-digit OTP</string>
+
 </resources>

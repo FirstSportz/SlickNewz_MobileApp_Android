@@ -26,7 +26,7 @@
                 android:textAppearance="@style/hello_there"
                 android:lineSpacingExtra="-2sp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="21dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="50dp"
                 android:gravity="top"
@@ -41,7 +41,7 @@
                 android:textColor="#000000"
                 android:textAppearance="@style/hello_there"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="21dp"
                 android:layout_alignParentTop="true"
                 android:gravity="top"
                 style="@style/hello_there"
@@ -50,12 +50,12 @@
 
         <!-- Subtitle -->
         <TextView
-            android:layout_width="372dp"
+            android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:text="@string/sign_in_msg"
             android:layout_marginBottom="24dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true"
             android:gravity="top"
             style="@style/create_an_account"/>
@@ -67,7 +67,7 @@
             android:orientation="horizontal"
             android:background="@drawable/rounded_box"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
@@ -102,7 +102,7 @@
             android:orientation="horizontal"
             android:background="@drawable/rounded_box"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
@@ -139,35 +139,50 @@
                 />
         </LinearLayout>
 
-        <!-- Checkbox -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
-            android:layout_alignParentTop="true"
             android:layout_marginBottom="16dp"
-            >
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="10dp">
 
-            <CheckBox
-                android:id="@+id/terms_checkbox"
+            <!-- Checkbox and Remember Me Text -->
+            <LinearLayout
+                android:id="@+id/rememberMeLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                />
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true">
 
+                <CheckBox
+                    android:id="@+id/terms_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/remember_me"
+                    android:textSize="12sp"
+                    android:textColor="#808080"
+                    style="@style/terms_n_conditions"
+                    />
+
+
+            </LinearLayout>
+
+            <!-- Forgot Password Text -->
             <TextView
-                android:id="@+id/termsAndPrivacyText"
+                android:id="@+id/forgotPasswordText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/remember_me"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="@string/forgot_password"
                 android:textSize="12sp"
-                android:textColor="#808080"
-                style="@style/terms_n_conditions"/>
+                style="@style/forgot_pass"
+                android:textColor="@color/primaryColor"/>
 
-        </LinearLayout>
+        </RelativeLayout>
+
 
         <!-- Sign In Button -->
         <Button
@@ -180,7 +195,7 @@
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true"
             android:background="@drawable/rounded_box"
             style="@style/sign_in_button"/>
@@ -194,7 +209,7 @@
             android:gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true">
 
             <View
@@ -228,7 +243,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true">
 
             <ImageView
@@ -252,7 +267,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="26dp"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
             >

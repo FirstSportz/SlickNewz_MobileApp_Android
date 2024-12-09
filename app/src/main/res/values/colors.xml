@@ -28,5 +28,7 @@
 
     <color name="primaryColor">#1868DB</color>
     <color name="googleTextColor">#FFFFFF</color>
+    <color name="roundedDefaultColor">#B0B0B0</color>
+
 
 </resources>

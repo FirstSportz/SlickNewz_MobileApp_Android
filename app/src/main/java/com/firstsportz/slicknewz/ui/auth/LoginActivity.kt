@@ -1,6 +1,8 @@
 package com.firstsportz.slicknewz.ui.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -35,7 +37,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loadingBar: LoadingDialog
     private lateinit var errorDialog: ErrorDialog
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var sharedPreferences: SharedPreferences
 
+    private val PREF_NAME = "LoginPreferences"
     private val authorizationToken = "Bearer 3fe0be312b6d703aa35cd0104816501f383cbfeac790d8a9d6931966d8a9a58fc5803511cf3040156d6200398c1bddf1ff92a28d18c0314719832855dc0edae0b7c3f30b6746d57659a07900ea854cc412f77c7f981833551e5a239b37d6d99ad7b4c264e5616cd3ee8fdc5c6333c70cff6aa7b972bd85df8579a5f2c798e554"
     private var isPasswordVisible = false
     private var hasErrorDialogBeenShown = false // Flag to avoid multiple error dialogs
@@ -48,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
         // Initialize utilities
         loadingBar = LoadingDialog(this)
         errorDialog = ErrorDialog(this)
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
         // Set up ViewModel
         val repository = AuthRepository()
@@ -57,8 +62,19 @@ class LoginActivity : AppCompatActivity() {
         // Observe LoginResponse
         observeLoginResponse()
 
+        // Load saved credentials if Remember Me is checked
+        loadSavedCredentials()
+
         // Handle Login button click
         binding.btnSignIn.setOnClickListener { handleLogin() }
+
+        // Save credentials on Remember Me checkbox
+        binding.termsCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) saveCredentials() else clearSavedCredentials()
+        }
+
+        // Handle Forgot Password click
+        binding.forgotPasswordText.setOnClickListener { navigateToForgotPassword() }
 
         // Toggle Password Visibility
         val etPassword: EditText = binding.etPassword
@@ -88,6 +104,29 @@ class LoginActivity : AppCompatActivity() {
         editText.setSelection(editText.text.length)
     }
 
+    private fun loadSavedCredentials() {
+        val savedEmail = sharedPreferences.getString("email", "")
+        val savedPassword = sharedPreferences.getString("password", "")
+
+        if (!savedEmail.isNullOrBlank() && !savedPassword.isNullOrBlank()) {
+            binding.etEmailfield.setText(savedEmail)
+            binding.etPassword.setText(savedPassword)
+            binding.termsCheckbox.isChecked = true
+        }
+    }
+
+    private fun saveCredentials() {
+        val editor = sharedPreferences.edit()
+        editor.putString("email", binding.etEmailfield.text.toString())
+        editor.putString("password", binding.etPassword.text.toString())
+        editor.apply()
+    }
+
+    private fun clearSavedCredentials() {
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
     private fun setupGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -95,6 +134,10 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
+    private fun navigateToForgotPassword() {
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
     private fun initiateGoogleSignIn() {
         if (!NetworkUtil.isInternetAvailable(this)) {
             errorDialog.showErrorDialog(message = getString(R.string.no_internet_connection))
@@ -132,7 +175,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleGoogleLogin(account: GoogleSignInAccount) {
         val request = LoginRequest(
-            email = account.email ?: "",
+            identifier = account.email ?: "",
             password = "", // OAuth-based login doesn't require password
             deviceToken = null,
             deviceOS = "android"
@@ -153,12 +196,13 @@ class LoginActivity : AppCompatActivity() {
 
         if (validateLoginFields(email, password)) {
             val request = LoginRequest(
-                email = email,
+                identifier = email,
                 password = password,
                 deviceToken = null,
                 deviceOS = "android"
             )
             loadingBar.show(getString(R.string.logging_in))
+            hasErrorDialogBeenShown = false // Reset the flag for the API call
             loginViewModel.loginUser(authorizationToken,request)
         }
     }
