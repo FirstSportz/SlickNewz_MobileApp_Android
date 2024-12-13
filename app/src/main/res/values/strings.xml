@@ -67,7 +67,7 @@
     <string name="received_code_txt">Haven’t received the code?</string>
     <string name="resend_code">  Resend Code</string>
 
-    <string name="create_an_account">Create an account</string>
+    <string name="create_an_account">  Create an account</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="logging_in">Login In....</string>
     <string name="update_password_msg">Updating Password....</string>

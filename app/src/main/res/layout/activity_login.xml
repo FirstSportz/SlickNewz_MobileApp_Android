@@ -55,7 +55,7 @@
             android:text="@string/sign_in_msg"
             android:layout_marginBottom="24dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true"
             android:gravity="top"
             style="@style/create_an_account"/>
@@ -67,7 +67,7 @@
             android:orientation="horizontal"
             android:background="@drawable/rounded_box"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
@@ -102,7 +102,7 @@
             android:orientation="horizontal"
             android:background="@drawable/rounded_box"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
@@ -143,7 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_marginRight="10dp">
 
             <!-- Checkbox and Remember Me Text -->
@@ -195,7 +195,7 @@
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true"
             android:background="@drawable/rounded_box"
             style="@style/sign_in_button"/>
@@ -209,7 +209,7 @@
             android:gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true">
 
             <View
@@ -243,7 +243,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true">
 
             <ImageView
@@ -267,7 +267,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="21dp"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
             >

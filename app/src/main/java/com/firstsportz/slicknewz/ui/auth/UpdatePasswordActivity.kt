@@ -15,6 +15,7 @@ import com.firstsportz.slicknewz.R
 import com.firstsportz.slicknewz.data.model.LoginRequest
 import com.firstsportz.slicknewz.data.model.LoginResponse
 import com.firstsportz.slicknewz.data.model.UpdatePasswordRequest
+import com.firstsportz.slicknewz.data.model.UpdatePasswordResponse
 import com.firstsportz.slicknewz.databinding.ActivityLoginBinding
 import com.firstsportz.slicknewz.databinding.ActivityUpdatepassBinding
 import com.firstsportz.slicknewz.repository.AuthRepository
@@ -24,6 +25,7 @@ import com.firstsportz.slicknewz.ui.utils.Resource
 import com.firstsportz.slicknewz.utils.NetworkUtil
 import com.firstsportz.slicknewz.viewmodel.UpdatePasswordViewModel
 import com.firstsportz.slicknewz.viewmodel.UpdatePasswordViewModelFactory
+import org.jetbrains.annotations.NotNull
 
 class UpdatePasswordActivity  : AppCompatActivity()  {
 
@@ -47,7 +49,12 @@ class UpdatePasswordActivity  : AppCompatActivity()  {
         loadingBar = LoadingDialog(this)
         errorDialog = ErrorDialog(this)
 
-        verificationCode=intent.extras?.getString("verificationCode").toString()
+        verificationCode = intent.extras?.getString("verificationCode") ?: ""
+        if (verificationCode.isBlank()) {
+            errorDialog.showErrorDialog("Error", "Verification code is missing.")
+            return
+        }
+        Log.d("UpdatePasswordActivity", "Verification Code: $verificationCode")
 
         // Set up ViewModel
         val repository = AuthRepository()
@@ -159,9 +166,8 @@ class UpdatePasswordActivity  : AppCompatActivity()  {
                     if (!hasErrorDialogBeenShown) {
                         hasErrorDialogBeenShown = true
                         loadingBar.dismiss()
-                        errorDialog.showErrorDialog(
-                            message = resource.message ?: "An error occurred."
-                        )
+                        handleErrorResponse(resource.message)
+
                     }
                 }
                 is Resource.Loading -> loadingBar.show()
@@ -170,13 +176,45 @@ class UpdatePasswordActivity  : AppCompatActivity()  {
     }
 
     private fun handleSuccessResponse(data: Any?) {
-        if (data is LoginResponse) {
-            errorDialog.showErrorDialog("Success", "Password Updated Successfully,Please login.")
-            finish()
-            // Navigate to the main screen
+        if (data is UpdatePasswordResponse) {
+            errorDialog.showErrorDialog(
+                title = "Success",
+                message = "Password Updated Successfully. Please login.",
+                onDismiss = {
+                    navigateToLoginScreen()
+                }
+            )
         } else {
             errorDialog.showErrorDialog(message = "Unexpected response format.")
         }
+    }
+
+    private fun handleErrorResponse(data: String?) {
+      try{
+            val errorMessage = data?: "An error occurred."
+
+            if (errorMessage == "Incorrect code provided") {
+                errorDialog.showErrorDialog(
+                    title = "Error",
+                    message = errorMessage,
+                    onDismiss = {
+                        finish() // Finish the current activity
+                    }
+                )
+            } else {
+                errorDialog.showErrorDialog(message = errorMessage)
+            }
+        } catch(ex:Exception){
+            errorDialog.showErrorDialog(message = "Unexpected response format.")
+        }
+    }
+
+
+    private fun navigateToLoginScreen() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish() // Ensure the current activity is finished
     }
 
 }

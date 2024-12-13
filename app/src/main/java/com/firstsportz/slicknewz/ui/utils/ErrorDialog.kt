@@ -8,7 +8,12 @@ import android.widget.TextView
 import com.firstsportz.slicknewz.R
 
 class ErrorDialog(private val context: Context) {
-    fun showErrorDialog(title: String = "Error", message: String = "Something went wrong.") {
+
+    fun showErrorDialog(
+        title: String = "Error",
+        message: String = "Something went wrong.",
+        onDismiss: (() -> Unit)? = null // Optional callback for when the button is clicked
+    ) {
         val dialog = Dialog(context)
         val view = LayoutInflater.from(context).inflate(R.layout.custom_error_dialog, null)
         dialog.setContentView(view)
@@ -25,6 +30,7 @@ class ErrorDialog(private val context: Context) {
 
         btnDismiss.setOnClickListener {
             dialog.dismiss()
+            onDismiss?.invoke() // Trigger the callback when the button is clicked
         }
 
         dialog.show()

@@ -39,8 +39,9 @@ class UpdatePasswordViewModel(private val repository: AuthRepository) : ViewMode
 
     private fun handleResponse(response: Response<UpdatePasswordResponse>) {
         if (response.isSuccessful) {
+            Log.d("Update Password", "Response Body: ${response.body()}")
             val body = response.body()
-            if (body?.user != null) {
+            if (body != null && body.jwt != null && body.user != null) {
                 // Successful response with a valid user
                 Log.d("Update Password", "Success: $body")
                 updatePasswordResponse.postValue(Resource.Success(body))

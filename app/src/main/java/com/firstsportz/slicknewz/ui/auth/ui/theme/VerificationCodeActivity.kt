@@ -18,6 +18,7 @@ import com.firstsportz.slicknewz.ui.utils.LoadingDialog
 import com.firstsportz.slicknewz.utils.NetworkUtil
 import com.firstsportz.slicknewz.viewmodel.ForgotPasswordViewModel
 import com.firstsportz.slicknewz.viewmodel.ForgotPasswordViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class VerificationCodeActivity : AppCompatActivity() {
 
@@ -80,9 +81,18 @@ class VerificationCodeActivity : AppCompatActivity() {
                 is com.firstsportz.slicknewz.ui.utils.Resource.Success -> {
                     hasErrorDialogBeenShown = false
                     loadingBar.dismiss()
-                    Toast.makeText(this, getString(R.string.reset_link_sent), Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, getString(R.string.reset_link_sent), Toast.LENGTH_LONG).show()
                     //finish() // Navigate back to login or other appropriate screen
+                    val snackbar =Snackbar.make(binding.root, getString(R.string.reset_link_sent), Snackbar.LENGTH_LONG)
+                    snackbar.show()
 
+                    // Delay the transition to the next activity
+                    snackbar.addCallback(object : Snackbar.Callback() {
+                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                            super.onDismissed(transientBottomBar, event)
+
+                        }
+                    })
 
                 }
                 is com.firstsportz.slicknewz.ui.utils.Resource.Error -> {
@@ -151,28 +161,22 @@ class VerificationCodeActivity : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if (!s.isNullOrEmpty() && s.length == 1) {
-                // Change the background color to #1868DB
-                changeBackgroundColor(currentField, R.color.primaryColor)
+                // Mark the current field as filled
+                currentField.isSelected = true
                 currentField.setTextColor(getColor(R.color.white))
+                currentField.clearFocus()
 
                 // Move to the next field
                 nextField?.requestFocus()
             } else if (before > 0 && s.isNullOrEmpty()) {
-                // Reset the background color to default
-                changeBackgroundColor(currentField, R.color.white)
+                // Clear the current field's selection
+                currentField.isSelected = false
                 currentField.setTextColor(getColor(R.color.black))
-
                 // Move focus back to the previous field
                 previousField?.requestFocus()
             }
         }
 
         override fun afterTextChanged(s: Editable?) {}
-
-        private fun changeBackgroundColor(field: androidx.appcompat.widget.AppCompatEditText, colorRes: Int) {
-            val background = field.background as GradientDrawable
-            background.setColor(getColor(colorRes))
-            field.background = background
-        }
     }
 }

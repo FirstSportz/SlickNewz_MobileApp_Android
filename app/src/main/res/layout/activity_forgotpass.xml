@@ -1,3 +1,7 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -122,3 +126,4 @@
         android:background="@drawable/rounded_box"
         style="@style/sign_in_button" />
 </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

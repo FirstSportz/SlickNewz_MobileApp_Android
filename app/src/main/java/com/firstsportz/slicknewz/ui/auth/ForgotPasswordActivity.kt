@@ -15,6 +15,7 @@ import com.firstsportz.slicknewz.ui.utils.LoadingDialog
 import com.firstsportz.slicknewz.utils.NetworkUtil
 import com.firstsportz.slicknewz.viewmodel.ForgotPasswordViewModel
 import com.firstsportz.slicknewz.viewmodel.ForgotPasswordViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
@@ -83,9 +84,20 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 is com.firstsportz.slicknewz.ui.utils.Resource.Success -> {
                     hasErrorDialogBeenShown = false
                     loadingBar.dismiss()
-                    Toast.makeText(this, getString(R.string.reset_link_sent), Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, getString(R.string.reset_link_sent), Toast.LENGTH_LONG).show()
+                    val snackbar =Snackbar.make(binding.root, getString(R.string.reset_link_sent), Snackbar.LENGTH_LONG)
+                    snackbar.show()
                     //finish() // Navigate back to login or other appropriate screen
-                    navigateToVerificationCode()
+
+                    // Delay the transition to the next activity
+                    snackbar.addCallback(object : Snackbar.Callback() {
+                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                            super.onDismissed(transientBottomBar, event)
+                            // Start the next activity only after the Snackbar is dismissed
+                            navigateToVerificationCode()
+                        }
+                    })
+
 
                 }
                 is com.firstsportz.slicknewz.ui.utils.Resource.Error -> {

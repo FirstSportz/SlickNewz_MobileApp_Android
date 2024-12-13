@@ -1,3 +1,8 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -73,55 +78,60 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/rounded_box"
+
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/OtpEditTextTheme"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etOtp2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/rounded_box"
+
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/OtpEditTextTheme"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etOtp3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/rounded_box"
+
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/OtpEditTextTheme"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etOtp4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/rounded_box"
+
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/OtpEditTextTheme"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etOtp5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/rounded_box"
+
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/OtpEditTextTheme"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -178,3 +188,4 @@
         android:background="@drawable/rounded_box"
         style="@style/sign_in_button" />
 </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
