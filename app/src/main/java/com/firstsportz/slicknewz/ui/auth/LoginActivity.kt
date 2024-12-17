@@ -248,9 +248,23 @@ class LoginActivity : AppCompatActivity() {
     private fun handleSuccessResponse(data: Any?) {
         if (data is LoginResponse) {
             errorDialog.showErrorDialog("Success", "Welcome ${data.user?.username}!")
+            val editor = sharedPreferences.edit()
+            editor.putString("jwt",data.jwt)
+            if(!sharedPreferences.contains("isProfileComplete"))
+                editor.putBoolean("isProfileComplete",false)
+
+            editor.apply()
+
+            if(!sharedPreferences.getBoolean("isProfileComplete",false))
+                navigateToChooseCategoryActivity()
             // Navigate to the main screen
         } else {
             errorDialog.showErrorDialog(message = "Unexpected response format.")
         }
+    }
+
+    private fun navigateToChooseCategoryActivity() {
+        val intent = Intent(this, ChooseInterestActivity::class.java)
+        startActivity(intent)
     }
 }

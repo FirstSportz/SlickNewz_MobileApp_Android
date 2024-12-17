@@ -1,5 +1,6 @@
 package com.firstsportz.slicknewz.data.network
 
+import com.firstsportz.slicknewz.data.model.CategoryResponse
 import com.firstsportz.slicknewz.data.model.ForgotPasswordRequest
 import com.firstsportz.slicknewz.data.model.ForgotPasswordResponse
 import com.firstsportz.slicknewz.data.model.LoginRequest
@@ -10,6 +11,7 @@ import com.firstsportz.slicknewz.data.model.UpdatePasswordRequest
 import com.firstsportz.slicknewz.data.model.UpdatePasswordResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -34,4 +36,10 @@ interface StrapiApi {
     @POST("/api/auth/reset-password")
     suspend fun updatePassword( @Header("Authorization") authorizationToken: String,
                                 @Body request: UpdatePasswordRequest): Response<UpdatePasswordResponse>
+
+
+    @GET("api/categories")
+    suspend fun getCategories(
+        @Header("Authorization") authHeader: String
+    ): Response<CategoryResponse>
 }

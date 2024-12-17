@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginBottom="16dp"
+    android:layout_marginTop="0dp"
+    android:background="@drawable/categorynoselect_bg"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/tvcategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left|center"
+        android:textColor="#000"
+        style="@style/category_txt"
+        android:text="Sports"
+        android:paddingLeft="95dp" />
+</LinearLayout>

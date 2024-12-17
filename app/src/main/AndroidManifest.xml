@@ -18,23 +18,29 @@
         android:theme="@style/Theme.SlickNewZ"
         tools:targetApi="31">
         <activity
+            android:name=".ui.auth.ChooseInterestActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+             />
+        <activity
             android:name=".ui.auth.VerificationCodeActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SlickNewZ"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
         <activity
             android:name=".ui.auth.ForgotPasswordActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SlickNewZ"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SlickNewZ"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,15 +51,14 @@
             android:name=".ui.auth.SignUpActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SlickNewZ"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
         <activity
             android:name=".ui.auth.UpdatePasswordActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SlickNewZ"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
     </application>
 
 </manifest>

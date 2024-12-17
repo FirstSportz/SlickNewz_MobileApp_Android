@@ -26,6 +26,7 @@
     <string name="sign_in_txt"> Sign in</string>
     <string name="next_txt">Next</string>
     <string name="submit_txt">Submit</string>
+    <string name="continue_txt">Continue</string>
     <string name="verify">Verify</string>
     <string name="sign_up_txt">Sign Up</string>
     <string name="sign_up_google_txt">Sign up using Google</string>
@@ -60,6 +61,8 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="forgot">Forgot</string>
     <string name="update">Update</string>
+    <string name="choose">Choose\nyour interests</string>
+    <string name="interest">your interests</string>
     <string name="password">Password</string>
     <string name="verification">Verification</string>
     <string name="sign_in_google_txt">Sign in using Google</string>
@@ -74,5 +77,13 @@
     <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
     <string name="title_activity_verification_code">VerificationCodeActivity</string>
     <string name="verification_code_validation">Please enter a valid 5-digit OTP</string>
+
+
+    <string name="choose_interest_title_msg">Read only what you are really interested in.</string>
+    <string name="loading_categories">Loading Categories...</string>
+    <string name="no_categories_selected">Please select any one category or skip to do it later.</string>
+    <string name="skip_the_step">Skip this step</string>
+
+
 
 </resources>

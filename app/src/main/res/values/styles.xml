@@ -42,6 +42,14 @@
         <item name="fontFamily">@font/montserrat_regular</item>
     </style>
 
+    <style name="continue_button">
+        <item name="android:textSize">16.2sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@color/white</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
+
     <style name="or_line">
         <item name="android:textSize">16.2sp</item>
         <item name="android:letterSpacing">-0.04</item>
@@ -76,6 +84,13 @@
         <item name="android:textColor">#1868DB</item>
     </style>
 
+    <!-- styles.xml -->
+    <style name="choose_interest_title">
+        <item name="android:textSize">57sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textColor">#1868DB</item>
+    </style>
+
     <style name="OtpEditTextTheme" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/otp_edit_text_background</item>
         <item name="android:textColor">@color/black</item>
@@ -84,6 +99,18 @@
         <item name="android:textSize">18sp</item>
         <item name="android:focusable">true</item>
         <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="CustomCheckboxBrand" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/customcheckboxbrand</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- styles.xml -->
+    <style name="category_txt">
+        <item name="android:textSize">16.2sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textColor">#000000</item>
     </style>
 
 </resources>

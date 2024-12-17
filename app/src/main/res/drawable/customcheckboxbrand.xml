@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Checked and disabled state -->
+    <item android:drawable="@drawable/chooseinterest_notselect"
+        android:state_checked="false"
+        />
+
+    <!-- Checked and enabled state -->
+    <item android:drawable="@drawable/selectedcheckbox"
+        android:state_checked="true"
+        />
+
+
+</selector>

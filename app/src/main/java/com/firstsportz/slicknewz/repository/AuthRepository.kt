@@ -18,4 +18,7 @@ class AuthRepository {
 
     suspend fun updatePassword(authorizationToken: String,updatePasswordRequest: UpdatePasswordRequest) =
         RetrofitClient.instance.updatePassword(authorizationToken,updatePasswordRequest)
+
+    suspend fun getCategories(authHeader: String) =
+        RetrofitClient.instance.getCategories(authHeader)
 }
