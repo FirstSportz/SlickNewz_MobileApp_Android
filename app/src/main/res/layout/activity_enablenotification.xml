@@ -1,0 +1,85 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <!-- Scrollable Content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnEnableNotifications"
+            android:padding="16dp">
+
+
+
+
+
+            <!-- Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:text="@string/stay_up_to_date_title"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    style="@style/stay_up_to_txt"
+                    />
+                <!-- Subtitle -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:text="@string/enable_notification_title"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    style="@style/create_an_account"
+                    />
+
+                <!-- choose Field -->
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/skip_the_step"
+            android:textSize="16.2sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            style="@style/already_have_account"
+            android:layout_above="@+id/btnEnableNotifications"
+            android:layout_marginBottom="10dp"/>
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/btnEnableNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="#4285F4"
+            android:text="@string/enable_notifications"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_box"
+            style="@style/sign_in_button"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

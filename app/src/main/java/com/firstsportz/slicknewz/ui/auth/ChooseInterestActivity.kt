@@ -1,6 +1,7 @@
 package com.firstsportz.slicknewz.ui.auth
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -143,11 +144,14 @@ class ChooseInterestActivity : AppCompatActivity() {
         binding.btnContinue.setOnClickListener {
             if (selectedCategories.isNotEmpty()) {
                 val selectedCategoryNames = selectedCategories.joinToString { it.name }
-                Toast.makeText(
+                /*Toast.makeText(
                     this,
                     "Selected Categories: $selectedCategoryNames",
                     Toast.LENGTH_SHORT
+
                 ).show()
+                */
+                navigateToEnableNotificationActivity()
                 // Proceed to the next step
             } else {
                 val snackbar =
@@ -161,6 +165,12 @@ class ChooseInterestActivity : AppCompatActivity() {
     private fun setSkipButtonClickListener() {
         binding.tvSkip.setOnClickListener {
            //got to next activity
+            navigateToEnableNotificationActivity()
         }
+    }
+
+    private fun navigateToEnableNotificationActivity() {
+        val intent = Intent(this, EnableNotificationsActivity::class.java)
+        startActivity(intent)
     }
 }

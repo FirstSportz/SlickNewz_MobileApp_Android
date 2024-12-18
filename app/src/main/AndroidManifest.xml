@@ -59,6 +59,20 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlickNewZ" />
+
+        <activity
+            android:name=".ui.auth.EnableNotificationsActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
+
+        <activity
+            android:name=".ui.auth.WelcomeActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlickNewZ" />
     </application>
 
 </manifest>

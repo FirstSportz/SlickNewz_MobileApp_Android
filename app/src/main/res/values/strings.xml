@@ -80,9 +80,16 @@
 
 
     <string name="choose_interest_title_msg">Read only what you are really interested in.</string>
+    <string name="enable_notification_title">Turn on notifications, and we’ll never\nlet you miss any updates</string>
+    <string name="stay_up_to_date_title">Stay up to date</string>
     <string name="loading_categories">Loading Categories...</string>
     <string name="no_categories_selected">Please select any one category or skip to do it later.</string>
     <string name="skip_the_step">Skip this step</string>
+    <string name="enable_notifications">Enable Notifications</string>
+    <string name="discover">Discover</string>
+    <string name="ready_to_use">ready to use</string>
+    <string name="account_is">Your account is</string>
+
 
 
 

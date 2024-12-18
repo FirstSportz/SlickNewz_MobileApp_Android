@@ -1,0 +1,130 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <!-- Scrollable Content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnDiscover"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/your_account_is_ready"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="21dp"
+                        android:layout_marginTop="50dp"
+                        android:gravity="top"
+                        android:lineSpacingExtra="-2sp"
+                        android:text="@string/account_is"
+                        android:textAppearance="@style/hello_there"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                        style="@style/your_account_is_ready"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="21dp"
+                        android:gravity="bottom"
+                        android:layout_gravity="bottom"
+                        android:lineSpacingExtra="-2sp"
+                        android:text="@string/ready_to_use"
+                        android:textAppearance="@style/hello_there"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        />
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/confetti"
+                            android:paddingBottom="2dp"
+                            android:layout_gravity="start"
+                            android:foregroundGravity="top"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/btnDiscover"
+            style="@style/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded_box"
+            android:backgroundTint="#4285F4"
+            android:text="@string/discover"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_anchor="@+id/relativeLayout"
+    app:layout_anchorGravity="center">
+    <TextView
+        android:id="@+id/tv_username"
+        style="@style/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+
+         />
+    <TextView
+        android:id="@+id/tv_tagname"
+        style="@style/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        />
+</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

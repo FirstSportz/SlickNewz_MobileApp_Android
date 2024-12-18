@@ -250,6 +250,8 @@ class LoginActivity : AppCompatActivity() {
             errorDialog.showErrorDialog("Success", "Welcome ${data.user?.username}!")
             val editor = sharedPreferences.edit()
             editor.putString("jwt",data.jwt)
+            editor.putString("userName",data.user?.username)
+
             if(!sharedPreferences.contains("isProfileComplete"))
                 editor.putBoolean("isProfileComplete",false)
 
