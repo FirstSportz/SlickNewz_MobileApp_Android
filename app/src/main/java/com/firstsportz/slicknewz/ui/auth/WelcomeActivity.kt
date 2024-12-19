@@ -34,7 +34,13 @@ class WelcomeActivity : AppCompatActivity() {
         binding.tvTagname.text = "@"+userName
         // Set button click listener
         binding.btnDiscover.setOnClickListener {
+            val editor = sharedPreferences.edit()
 
+            if(!sharedPreferences.contains("isProfileComplete"))
+                editor.putBoolean("isProfileComplete",true)
+            editor.apply()
+
+            navigateToDashboardScreen()
         }
 
 
@@ -42,7 +48,12 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
 
-
+    private fun navigateToDashboardScreen() {
+        val intent = Intent(this, DashboardActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish() // Ensure the current activity is finished
+    }
 
 
 
