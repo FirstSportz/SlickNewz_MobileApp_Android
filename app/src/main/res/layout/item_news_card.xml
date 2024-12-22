@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="8dp"
-    app:cardUseCompatPadding="true">
+
 
     <!-- Parent Layout -->
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
 
         <!-- News Image -->
         <ImageView
             android:id="@+id/imageNews"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:scaleType="centerCrop"
             android:src="@drawable/news"
             android:layout_marginTop="8dp"
@@ -36,10 +30,10 @@
             android:layout_below="@id/imageNews"
             android:layout_alignParentStart="true"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
             android:text="News Title"
-            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#333333"/>
+            style="@style/news_title"/>
 
         <!-- News Description -->
         <TextView
@@ -49,8 +43,8 @@
             android:layout_below="@id/textNewsTitle"
             android:layout_alignParentStart="true"
             android:layout_marginTop="4dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/news_date_time"
-            android:textSize="14sp"
             android:maxLines="2"
             android:ellipsize="end"
             style="@style/news_date_time"/>
@@ -62,7 +56,6 @@
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@+id/textNewsDateTime"
             android:text="@string/read_full_news"
-            android:textSize="14sp"
             android:maxLines="2"
             android:ellipsize="end"
             android:layout_marginEnd="60dp"
@@ -78,9 +71,12 @@
             android:layout_alignBottom="@id/textNewsDescription"
             android:layout_toEndOf="@id/textNewsDescription"
             android:src="@drawable/ic_more_vert"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="100dp"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:contentDescription="Menu Options"/>
 
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+

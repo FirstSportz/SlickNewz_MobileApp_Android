@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Share via"
-        android:textSize="16sp"
         android:drawableLeft="@drawable/share"
         android:drawablePadding="8dp"
         android:padding="12dp"
         android:clickable="true"
+        style="@style/bottom_sheet_menu"
+        android:layout_marginTop="20dp"
         android:background="?attr/selectableItemBackground"/>
 
     <!-- Embed Option -->
@@ -25,11 +26,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Embed"
-        android:textSize="16sp"
         android:drawableLeft="@drawable/share"
         android:drawablePadding="8dp"
         android:padding="12dp"
         android:clickable="true"
+        style="@style/bottom_sheet_menu"
+        android:layout_marginTop="20dp"
         android:background="?attr/selectableItemBackground"/>
 
     <!-- Add to Bookmark Option -->
@@ -38,11 +40,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add to bookmark"
-        android:textSize="16sp"
-        android:drawableLeft="@drawable/share"
+        android:drawableLeft="@drawable/bookmark"
         android:drawablePadding="8dp"
         android:padding="12dp"
         android:clickable="true"
+        style="@style/bottom_sheet_menu"
+        android:layout_marginTop="20dp"
         android:background="?attr/selectableItemBackground"/>
 
     <!-- Save to Gallery Option -->
@@ -51,11 +54,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save to gallery"
-        android:textSize="16sp"
-        android:drawableLeft="@drawable/share"
+        android:drawableLeft="@drawable/save"
         android:drawablePadding="8dp"
         android:padding="12dp"
         android:clickable="true"
+        android:layout_marginTop="20dp"
+        style="@style/bottom_sheet_menu"
         android:background="?attr/selectableItemBackground"/>
 
     <!-- Hide Post Option -->
@@ -64,11 +68,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hide this post"
-        android:textSize="16sp"
-        android:drawableLeft="@drawable/share"
+        android:drawableLeft="@drawable/eye"
         android:drawablePadding="8dp"
         android:padding="12dp"
         android:clickable="true"
+        style="@style/bottom_sheet_menu"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="?attr/selectableItemBackground"/>
 
 </LinearLayout>

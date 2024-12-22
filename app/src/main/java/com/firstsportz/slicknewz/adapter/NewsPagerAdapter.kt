@@ -7,18 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.firstsportz.slicknewz.R
+import com.firstsportz.slicknewz.data.model.News
 import com.firstsportz.slicknewz.ui.auth.DashboardActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class NewsPagerAdapter(private val activity: DashboardActivity) :
-    RecyclerView.Adapter<NewsPagerAdapter.NewsViewHolder>() {
-
-    private val newsList = listOf(
-        "Formula 1 News",
-        "Business Courses",
-        "Latest Hollywood Buzz",
-        "Sports Highlights"
-    )
+class NewsPagerAdapter(
+    private val activity: DashboardActivity,
+    private val newsList: List<News>
+) : RecyclerView.Adapter<NewsPagerAdapter.NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -37,18 +33,18 @@ class NewsPagerAdapter(private val activity: DashboardActivity) :
         private val newsImage: ImageView = itemView.findViewById(R.id.imageNews)
         private val menuOptions: ImageView = itemView.findViewById(R.id.menuOptions)
 
-        fun bind(news: String) {
-            newsTitle.text = news
-            // Set a placeholder image
+        fun bind(news: News) {
+            newsTitle.text = news.title
+            // Set placeholder or dynamically load image
             newsImage.setImageResource(R.drawable.news)
 
             // Handle menu options click
             menuOptions.setOnClickListener {
-                showBottomSheetOptions()
+                showBottomSheetOptions(news)
             }
         }
 
-        private fun showBottomSheetOptions() {
+        private fun showBottomSheetOptions(news: News) {
             val bottomSheetDialog = BottomSheetDialog(activity)
             val bottomSheetView = LayoutInflater.from(activity).inflate(
                 R.layout.bottom_sheet_menu,
@@ -57,27 +53,52 @@ class NewsPagerAdapter(private val activity: DashboardActivity) :
 
             bottomSheetView.findViewById<TextView>(R.id.optionShare).setOnClickListener {
                 // Handle share logic
+                shareNews(news)
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionEmbed).setOnClickListener {
                 // Handle embed logic
+                embedNews(news)
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionBookmark).setOnClickListener {
-                // Handle add to bookmark logic
+                // Handle bookmark logic
+                bookmarkNews(news)
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionSaveGallery).setOnClickListener {
                 // Handle save to gallery logic
+                saveNewsToGallery(news)
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionHidePost).setOnClickListener {
                 // Handle hide post logic
+                hideNewsPost(news)
                 bottomSheetDialog.dismiss()
             }
 
             bottomSheetDialog.setContentView(bottomSheetView)
             bottomSheetDialog.show()
+        }
+
+        private fun shareNews(news: News) {
+            // Share news logic (e.g., using Intent)
+        }
+
+        private fun embedNews(news: News) {
+            // Embed news logic
+        }
+
+        private fun bookmarkNews(news: News) {
+            // Bookmark news logic
+        }
+
+        private fun saveNewsToGallery(news: News) {
+            // Save news to gallery logic
+        }
+
+        private fun hideNewsPost(news: News) {
+            // Hide post logic
         }
     }
 }

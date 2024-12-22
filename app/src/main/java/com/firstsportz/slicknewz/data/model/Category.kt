@@ -9,5 +9,6 @@ data class Category(
     val createdAt: String,
     val updatedAt: String,
     val publishedAt: String,
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    val news: List<News>
 )

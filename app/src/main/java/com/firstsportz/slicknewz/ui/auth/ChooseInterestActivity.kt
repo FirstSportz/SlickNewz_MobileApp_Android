@@ -34,6 +34,10 @@ class ChooseInterestActivity : AppCompatActivity() {
     private var authorizationToken = "Bearer <your-token>" // Replace with actual token
     private val PREF_NAME = "LoginPreferences"
 
+    companion object {
+        const val PREF_KEY_SELECTED_CATEGORIES = "selectedCategories"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseinterestBinding.inflate(layoutInflater)
@@ -143,30 +147,38 @@ class ChooseInterestActivity : AppCompatActivity() {
     private fun setButtonClickListener() {
         binding.btnContinue.setOnClickListener {
             if (selectedCategories.isNotEmpty()) {
-                val selectedCategoryNames = selectedCategories.joinToString { it.name }
-                /*Toast.makeText(
-                    this,
-                    "Selected Categories: $selectedCategoryNames",
-                    Toast.LENGTH_SHORT
-
-                ).show()
-                */
+                saveSelectedCategories()
                 navigateToEnableNotificationActivity()
-                // Proceed to the next step
             } else {
-                val snackbar =
-                    Snackbar.make(binding.root, getString(R.string.no_categories_selected), Snackbar.LENGTH_LONG)
+                val snackbar = Snackbar.make(
+                    binding.root,
+                    getString(R.string.no_categories_selected),
+                    Snackbar.LENGTH_LONG
+                )
                 snackbar.show()
-                //Toast.makeText(this, getString(R.string.no_categories_selected), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setSkipButtonClickListener() {
         binding.tvSkip.setOnClickListener {
-           //got to next activity
+            // Save an empty category list and proceed
+            saveSelectedCategories(emptySet())
             navigateToEnableNotificationActivity()
         }
+    }
+
+    private fun saveSelectedCategories() {
+        val categoryNames = selectedCategories.map { it.name }.toSet()
+        sharedPreferences.edit()
+            .putStringSet(PREF_KEY_SELECTED_CATEGORIES, categoryNames)
+            .apply()
+    }
+
+    private fun saveSelectedCategories(categories: Set<String>) {
+        sharedPreferences.edit()
+            .putStringSet(PREF_KEY_SELECTED_CATEGORIES, categories)
+            .apply()
     }
 
     private fun navigateToEnableNotificationActivity() {
