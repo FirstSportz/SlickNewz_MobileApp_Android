@@ -2,9 +2,11 @@ package com.firstsportz.slicknewz.repository
 
 import com.firstsportz.slicknewz.data.model.ForgotPasswordRequest
 import com.firstsportz.slicknewz.data.model.LoginRequest
+import com.firstsportz.slicknewz.data.model.NewsResponse
 import com.firstsportz.slicknewz.data.model.SignUpRequest
 import com.firstsportz.slicknewz.data.model.UpdatePasswordRequest
 import com.firstsportz.slicknewz.data.network.RetrofitClient
+import retrofit2.Response
 
 class AuthRepository {
     suspend fun registerUser(authHeader: String, request: SignUpRequest) =
@@ -21,4 +23,8 @@ class AuthRepository {
 
     suspend fun getCategories(authHeader: String) =
         RetrofitClient.instance.getCategories(authHeader)
+
+    suspend fun fetchNews(authorization: String, url: String): Response<NewsResponse> {
+        return RetrofitClient.instance.fetchNews(url,authorization)
+    }
 }

@@ -20,6 +20,7 @@ import com.firstsportz.slicknewz.ui.utils.Resource
 import com.firstsportz.slicknewz.viewmodel.CategoryViewModel
 import com.firstsportz.slicknewz.viewmodel.CategoryViewModelFactory
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 
 class ChooseInterestActivity : AppCompatActivity() {
 
@@ -169,11 +170,20 @@ class ChooseInterestActivity : AppCompatActivity() {
     }
 
     private fun saveSelectedCategories() {
-        val categoryNames = selectedCategories.map { it.name }.toSet()
+        // Create a list of JSON objects representing the selected categories
+        val selectedCategoriesJson = selectedCategories.map { category ->
+            mapOf("id" to category.id, "name" to category.name)
+        }
+
+        // Convert the list to a JSON string
+        val json = Gson().toJson(selectedCategoriesJson)
+
+        // Save the JSON string in shared preferences
         sharedPreferences.edit()
-            .putStringSet(PREF_KEY_SELECTED_CATEGORIES, categoryNames)
+            .putString(PREF_KEY_SELECTED_CATEGORIES, json)
             .apply()
     }
+
 
     private fun saveSelectedCategories(categories: Set<String>) {
         sharedPreferences.edit()

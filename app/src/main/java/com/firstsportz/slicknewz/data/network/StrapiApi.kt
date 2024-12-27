@@ -5,6 +5,7 @@ import com.firstsportz.slicknewz.data.model.ForgotPasswordRequest
 import com.firstsportz.slicknewz.data.model.ForgotPasswordResponse
 import com.firstsportz.slicknewz.data.model.LoginRequest
 import com.firstsportz.slicknewz.data.model.LoginResponse
+import com.firstsportz.slicknewz.data.model.NewsResponse
 import com.firstsportz.slicknewz.data.model.SignUpRequest
 import com.firstsportz.slicknewz.data.model.SignUpResponse
 import com.firstsportz.slicknewz.data.model.UpdatePasswordRequest
@@ -14,6 +15,8 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface StrapiApi {
     @POST("api/auth/local/register")
@@ -42,4 +45,11 @@ interface StrapiApi {
     suspend fun getCategories(
         @Header("Authorization") authHeader: String
     ): Response<CategoryResponse>
+
+
+    @GET
+    suspend fun fetchNews(
+        @Url url: String,
+        @Header("Authorization") authorization: String
+    ): Response<NewsResponse>
 }
