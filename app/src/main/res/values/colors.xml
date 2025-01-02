@@ -30,5 +30,8 @@
     <color name="googleTextColor">#FFFFFF</color>
     <color name="roundedDefaultColor">#B0B0B0</color>
 
+    <color name="selected_tab_color">#F6F5FA</color>
+    <color name="unselected_tab_color">#B0B0B0</color>
+
 
 </resources>

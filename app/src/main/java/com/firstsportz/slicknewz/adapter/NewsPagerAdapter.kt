@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -18,20 +19,55 @@ import java.util.concurrent.TimeUnit
 
 class NewsPagerAdapter(
     private val activity: DashboardActivity,
-    private val newsList: List<NewsData>
-) : RecyclerView.Adapter<NewsPagerAdapter.NewsViewHolder>() {
+    private var newsList: List<NewsData> = emptyList(),
+    private var isLoading: Boolean = true // Initial state is loading
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_news_card, parent, false)
-        return NewsViewHolder(view)
+    companion object {
+        private const val TYPE_LOADING = 0
+        private const val TYPE_CONTENT = 1
     }
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(newsList[position])
+    override fun getItemViewType(position: Int): Int {
+        return if (isLoading) TYPE_LOADING else TYPE_CONTENT
     }
 
-    override fun getItemCount() = newsList.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == TYPE_LOADING) {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_loading, parent, false)
+            LoadingViewHolder(view)
+        } else {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_news_card, parent, false)
+            NewsViewHolder(view)
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is NewsViewHolder && !isLoading) {
+            holder.bind(newsList[position])
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return if (isLoading) 1 else newsList.size
+    }
+
+    fun setNewsList(newsList: List<NewsData>) {
+        this.newsList = newsList
+        this.isLoading = false
+        notifyDataSetChanged()
+    }
+
+    fun setLoadingState() {
+        this.isLoading = true
+        notifyDataSetChanged()
+    }
+
+    inner class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
+    }
 
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val newsTitle: TextView = itemView.findViewById(R.id.textNewsTitle)
@@ -40,20 +76,17 @@ class NewsPagerAdapter(
         private val menuOptions: ImageView = itemView.findViewById(R.id.menuOptions)
 
         fun bind(newsData: NewsData) {
-            // Set the news title
             newsTitle.text = newsData.title
 
-            // Load the image using Glide
             Glide.with(itemView.context)
-                .load(newsData.cover.url) // Use the medium-sized image from the API
+                .load(newsData.cover.url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(newsImage)
 
-            // Format and set the publishedAt date
-            val (relativeDate, formattedDate) = newsData.publishedAt?.let { getFormattedAndRelativeTime(it) } ?: "N/A" to "N/A"
-            newsDateTime.text = "$relativeDate • $formattedDate | "
+            val (relativeDate, formattedDate) = newsData.publishedAt?.let { getFormattedAndRelativeTime(it) }
+                ?: "N/A" to "N/A"
+            newsDateTime.text = "$relativeDate • $formattedDate"
 
-            // Handle menu options click
             menuOptions.setOnClickListener {
                 showBottomSheetOptions(newsData)
             }
@@ -62,28 +95,22 @@ class NewsPagerAdapter(
         private fun showBottomSheetOptions(newsData: NewsData) {
             val bottomSheetDialog = BottomSheetDialog(activity)
             val bottomSheetView = LayoutInflater.from(activity).inflate(
-                R.layout.bottom_sheet_menu,
-                null
+                R.layout.bottom_sheet_menu, null
             )
 
             bottomSheetView.findViewById<TextView>(R.id.optionShare).setOnClickListener {
-                // Handle share logic
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionEmbed).setOnClickListener {
-                // Handle embed logic
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionBookmark).setOnClickListener {
-                // Handle bookmark logic
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionSaveGallery).setOnClickListener {
-                // Handle save to gallery logic
                 bottomSheetDialog.dismiss()
             }
             bottomSheetView.findViewById<TextView>(R.id.optionHidePost).setOnClickListener {
-                // Handle hide post logic
                 bottomSheetDialog.dismiss()
             }
 
@@ -94,8 +121,7 @@ class NewsPagerAdapter(
         private fun getFormattedAndRelativeTime(publishedAt: String): Pair<String, String> {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
             inputFormat.timeZone = TimeZone.getTimeZone("UTC")
-
-            val outputFormat = SimpleDateFormat("hh:mm a z", Locale.getDefault()) // e.g., "11:50 PM IST"
+            val outputFormat = SimpleDateFormat("hh:mm a z", Locale.getDefault())
             outputFormat.timeZone = TimeZone.getDefault()
 
             return try {
@@ -121,5 +147,3 @@ class NewsPagerAdapter(
         }
     }
 }
-
-

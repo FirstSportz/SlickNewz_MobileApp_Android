@@ -32,11 +32,13 @@ class ChooseInterestActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var hasErrorDialogBeenShown = false
     private val selectedCategories = mutableListOf<Category>()
+    private val allCategories = mutableListOf<Category>()
     private var authorizationToken = "Bearer <your-token>" // Replace with actual token
     private val PREF_NAME = "LoginPreferences"
 
     companion object {
         const val PREF_KEY_SELECTED_CATEGORIES = "selectedCategories"
+        const val PREF_KEY_ALL_CATEGORIES = "allCategories"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +52,8 @@ class ChooseInterestActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val jwt = sharedPreferences.getString("jwt", "")
-        authorizationToken= "Bearer $jwt"
+        authorizationToken = "Bearer $jwt"
+
         // Set up ViewModel
         val repository = AuthRepository()
         val factory = CategoryViewModelFactory(repository)
@@ -84,7 +87,11 @@ class ChooseInterestActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     hasErrorDialogBeenShown = false
                     loadingBar.dismiss()
-                    resource.data?.data?.let { displayCategories(it) }
+                    resource.data?.data?.let { categories ->
+                        allCategories.addAll(categories)
+                        saveAllCategories(categories)
+                        displayCategories(categories)
+                    }
                 }
                 is Resource.Error -> {
                     if (!hasErrorDialogBeenShown) {
@@ -164,30 +171,24 @@ class ChooseInterestActivity : AppCompatActivity() {
     private fun setSkipButtonClickListener() {
         binding.tvSkip.setOnClickListener {
             // Save an empty category list and proceed
-            saveSelectedCategories(emptySet())
+            saveSelectedCategories()
             navigateToEnableNotificationActivity()
         }
     }
 
     private fun saveSelectedCategories() {
-        // Create a list of JSON objects representing the selected categories
-        val selectedCategoriesJson = selectedCategories.map { category ->
-            mapOf("id" to category.id, "name" to category.name)
-        }
-
-        // Convert the list to a JSON string
-        val json = Gson().toJson(selectedCategoriesJson)
-
-        // Save the JSON string in shared preferences
+        // Save selected categories as JSON
+        val selectedCategoriesJson = Gson().toJson(selectedCategories)
         sharedPreferences.edit()
-            .putString(PREF_KEY_SELECTED_CATEGORIES, json)
+            .putString(PREF_KEY_SELECTED_CATEGORIES, selectedCategoriesJson)
             .apply()
     }
 
-
-    private fun saveSelectedCategories(categories: Set<String>) {
+    private fun saveAllCategories(categories: List<Category>) {
+        // Save all categories as JSON
+        val allCategoriesJson = Gson().toJson(categories)
         sharedPreferences.edit()
-            .putStringSet(PREF_KEY_SELECTED_CATEGORIES, categories)
+            .putString(PREF_KEY_ALL_CATEGORIES, allCategoriesJson)
             .apply()
     }
 
