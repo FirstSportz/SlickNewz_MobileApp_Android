@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.firstsportz.slicknewz.R
+import com.firstsportz.slicknewz.adapter.MyFeedPagerAdapter
 import com.firstsportz.slicknewz.adapter.NewsPagerAdapter
 import com.firstsportz.slicknewz.data.model.NewsData
 import com.firstsportz.slicknewz.repository.AuthRepository
@@ -27,7 +28,7 @@ import com.google.gson.reflect.TypeToken
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DashboardActivity : AppCompatActivity() {
+class MyFeedActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
@@ -39,15 +40,15 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private val PREF_NAME = "LoginPreferences"
-    private val PREF_KEY_ALL_CATEGORIES = "allCategories"
+    private val PREF_KEY_SELECTED_CATEGORIES = "selectedCategories"
     private lateinit var newsViewModel: NewsViewModel
     private var authorizationToken = "Bearer <your-token>" // Replace with actual token
 
-    private lateinit var newsAdapter: NewsPagerAdapter
+    private lateinit var newsAdapter: MyFeedPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+        setContentView(R.layout.activity_myfeed)
 
         // Initialize views
         tabLayout = findViewById(R.id.tabLayoutCategories)
@@ -76,16 +77,17 @@ class DashboardActivity : AppCompatActivity() {
     private fun setupTabs() {
         val selectedCategories = getSelectedCategoriesFromPreferences()
         val categories = mutableListOf<Pair<Int?, String>>().apply {
-            add(null to "Trending Today") // Default tab
             addAll(selectedCategories)
         }
 
         setupTabLayout(categories)
-        fetchNewsForCategory(null) // Load "Trending Today" news by default
+
+        val categoryId = categories[0].first
+        fetchNewsForCategory(categoryId)
     }
 
     private fun getSelectedCategoriesFromPreferences(): List<Pair<Int, String>> {
-        val json = sharedPreferences.getString(PREF_KEY_ALL_CATEGORIES, null) ?: return emptyList()
+        val json = sharedPreferences.getString(PREF_KEY_SELECTED_CATEGORIES, null) ?: return emptyList()
         return try {
             val type = object : TypeToken<List<Map<String, Any>>>() {}.type
             val categoryList = Gson().fromJson<List<Map<String, Any>>>(json, type)
@@ -121,7 +123,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun fetchNewsForCategory(categoryId: Int?) {
-        newsAdapter = NewsPagerAdapter(this, isLoading = true)
+        newsAdapter = MyFeedPagerAdapter(this, isLoading = true)
         viewPager.adapter = newsAdapter
 
         if (categoryId == null) {
@@ -189,15 +191,15 @@ class DashboardActivity : AppCompatActivity() {
 
 
         // Default selection: Discover
-        selectBottomTab(R.id.nav_discover, tabs)
+        selectBottomTab(R.id.nav_bookmarks, tabs)
 
         tabs.forEach { (tabId, ids) ->
             val tabLayout = findViewById<LinearLayout>(tabId)
             tabLayout.setOnClickListener {
                 selectBottomTab(tabId, tabs)
                 when (tabId) {
-                    R.id.nav_discover -> { /* Stay on Discover */ }
-                    R.id.nav_bookmarks -> navigateToMyFeedActivity()
+                    R.id.nav_discover -> navigateToDiscoverActivity()
+                    R.id.nav_bookmarks -> { /* Stay on My Feed */ }
                     R.id.nav_play -> { /* Open Play content */ }
                     R.id.nav_profile -> navigateToProfileActivity()
                 }
@@ -234,15 +236,17 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMyFeedActivity() {
-        val intent = Intent(this, MyFeedActivity::class.java)
+    private fun navigateToDiscoverActivity() {
+        val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
+        finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out) // Smooth transition
     }
 
     private fun navigateToProfileActivity() {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
+        finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out) // Smooth transition
     }
 

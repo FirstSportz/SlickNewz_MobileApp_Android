@@ -60,7 +60,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/bookmarks"
-            app:tint="@color/black" />
+             />
 
         <TextView
             android:id="@+id/text_bookmarks"
@@ -92,7 +92,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/play"
-            app:tint="@color/black" />
+             />
 
         <TextView
             android:id="@+id/text_play"
@@ -122,8 +122,8 @@
             android:id="@+id/icon_profile"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/profile"
-            app:tint="@color/black" />
+            android:src="@drawable/profile_selected"
+             />
 
         <TextView
             android:id="@+id/text_profile"

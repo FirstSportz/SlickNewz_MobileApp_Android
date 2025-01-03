@@ -91,7 +91,12 @@
     <string name="account_is">Your account is</string>
     <string name="news_date_time">11:50 PM ET | </string>
     <string name="read_full_news">Read full News</string>
-
+    <string name="title_activity_profile">ProfileActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
 
 
